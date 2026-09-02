@@ -1,0 +1,16 @@
+# Hugo 生成的网站
+/public/
+
+# Hugo 资源缓存
+/resources/_gen/
+
+# Hugo 开发服务器锁文件
+/.hugo_build.lock
+
+# Windows 系统文件
+Thumbs.db
+Desktop.ini
+
+# 编辑器配置
+/.vscode/
+/.idea/

@@ -1,0 +1,14 @@
+# 所有文本文件统一使用 LF，方便跨 Windows、Linux 和服务器使用
+* text=auto eol=lf
+
+# 二进制文件不进行换行转换
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
+*.zip binary

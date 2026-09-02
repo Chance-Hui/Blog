@@ -1,0 +1,14 @@
+baseURL = 'http://localhost:1313/'
+languageCode = 'zh-CN'
+defaultContentLanguage = 'zh'
+hasCJKLanguage = true
+title = 'Chance'
+theme = 'hugo-theme-stack'
+
+[params]
+    mainSections = ['posts']
+
+    [params.sidebar]
+        avatar = 'img/dog.jpg'
+        emoji = ''
+        subtitle = '记录网络、Linux、Python、Java 与 AI 的学习过程'
