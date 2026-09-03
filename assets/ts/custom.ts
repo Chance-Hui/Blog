@@ -1,3 +1,5 @@
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 function setupReadingProgress() {
     const article = document.querySelector<HTMLElement>('.main-article');
 
@@ -45,11 +47,93 @@ function setupReadingProgress() {
     window.addEventListener('scroll', requestProgressUpdate, { passive: true });
     window.addEventListener('resize', measureArticle);
     window.addEventListener('load', measureArticle, { once: true });
+
+    if ('ResizeObserver' in window) {
+        const articleResizeObserver = new ResizeObserver(measureArticle);
+        articleResizeObserver.observe(article);
+    }
+
     measureArticle();
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupReadingProgress, { once: true });
-} else {
+function setupScrollReveal() {
+    const items = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+
+    if (items.length === 0) {
+        return;
+    }
+
+    items.forEach((item, index) => {
+        item.style.setProperty('--reveal-order', String(Math.min(index, 6)));
+    });
+
+    if (reducedMotion.matches || !('IntersectionObserver' in window)) {
+        items.forEach((item) => item.classList.add('is-visible'));
+        return;
+    }
+
+    document.documentElement.classList.add('motion-ready');
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            });
+        },
+        {
+            rootMargin: '0px 0px -10% 0px',
+            threshold: 0.1,
+        }
+    );
+
+    items.forEach((item) => observer.observe(item));
+}
+
+function setupHeroParallax() {
+    const hero = document.querySelector<HTMLElement>('.home-hero');
+    const content = hero?.querySelector<HTMLElement>('.home-hero__content');
+
+    if (!hero || !content || reducedMotion.matches) {
+        return;
+    }
+
+    let frameId = 0;
+
+    const updateHero = () => {
+        frameId = 0;
+        const heroBottom = hero.offsetTop + hero.offsetHeight;
+
+        if (window.scrollY > heroBottom) {
+            return;
+        }
+
+        const offset = Math.min(window.scrollY * 0.075, 44);
+        content.style.setProperty('--hero-offset', `${offset}px`);
+    };
+
+    const requestHeroUpdate = () => {
+        if (frameId === 0) {
+            frameId = window.requestAnimationFrame(updateHero);
+        }
+    };
+
+    window.addEventListener('scroll', requestHeroUpdate, { passive: true });
+    updateHero();
+}
+
+function setupEnhancements() {
     setupReadingProgress();
+    setupScrollReveal();
+    setupHeroParallax();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupEnhancements, { once: true });
+} else {
+    setupEnhancements();
 }

@@ -1,0 +1,81 @@
+{{ define "body-class" }}home-page{{ end }}
+
+{{ define "main" }}
+    {{- $paginator := partial "helper/paginator.html" . -}}
+    {{- $posts := where .Site.RegularPages "Section" "posts" -}}
+
+    <section class="home-hero" aria-labelledby="home-hero-title">
+        <div class="home-hero__glow" aria-hidden="true">
+            <span class="home-hero__orb home-hero__orb--one"></span>
+            <span class="home-hero__orb home-hero__orb--two"></span>
+            <span class="home-hero__ring"></span>
+        </div>
+
+        <div class="home-hero__content">
+            <p class="home-hero__eyebrow">
+                <span aria-hidden="true"></span>
+                {{ .Site.Title }} · PERSONAL NOTES
+            </p>
+            <h1 id="home-hero-title">
+                把学习，<br>
+                <span>沉淀成作品。</span>
+            </h1>
+            <p class="home-hero__description">{{ .Site.Params.sidebar.subtitle }}</p>
+
+            <div class="home-hero__actions">
+                <a class="home-hero__button" href="#latest-notes">
+                    浏览文章
+                    {{ partial "helper/icon" "chevron-right" }}
+                </a>
+                <span class="home-hero__count">{{ len $posts }} 篇公开记录</span>
+            </div>
+        </div>
+
+        <a class="home-hero__scroll" href="#latest-notes" aria-label="向下浏览最新文章">
+            <span>SCROLL</span>
+            <i aria-hidden="true"></i>
+        </a>
+    </section>
+
+    <section class="home-notes" id="latest-notes" aria-labelledby="latest-notes-title">
+        <header class="home-notes__header" data-reveal>
+            <div>
+                <p>SELECTED NOTES</p>
+                <h2 id="latest-notes-title">最近记录</h2>
+            </div>
+            <span>持续学习，持续更新</span>
+        </header>
+
+        <div class="home-notes__grid">
+            {{ range $index, $page := $paginator.Pages }}
+                <article class="home-note-card {{ if eq $index 0 }}home-note-card--featured{{ end }}" data-reveal>
+                    <a href="{{ .RelPermalink }}" aria-label="阅读《{{ .Title }}》">
+                        <span class="home-note-card__number" aria-hidden="true">{{ printf "%02d" (add $index 1) }}</span>
+                        <div class="home-note-card__content">
+                            <div class="home-note-card__meta">
+                                {{ if not .Date.IsZero }}
+                                    <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                                        {{ .Date | time.Format .Site.Params.dateFormat.published }}
+                                    </time>
+                                {{ end }}
+                                <span>{{ T "article.readingTime" .ReadingTime }}</span>
+                            </div>
+                            <h3>{{ .Title }}</h3>
+                            <p>{{ .Summary | plainify | htmlUnescape | truncate 150 }}</p>
+                        </div>
+                        <span class="home-note-card__arrow" aria-hidden="true">
+                            {{ partial "helper/icon" "chevron-right" }}
+                        </span>
+                    </a>
+                </article>
+            {{ end }}
+        </div>
+    </section>
+
+    {{- partial "pagination.html" . -}}
+    {{- partial "footer/footer" . -}}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}
