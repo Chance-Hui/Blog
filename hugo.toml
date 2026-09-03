@@ -11,4 +11,4 @@ theme = 'hugo-theme-stack'
     [params.sidebar]
         avatar = 'img/dog.jpg'
         emoji = ''
-        subtitle = '记录网络、Linux、Python、Java 与 AI 的学习过程'
+        subtitle = '记录我自己计算机的学习过程'

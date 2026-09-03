@@ -1,6 +1,4 @@
 +++
-title = '关于'
-description = '关于我和这个博客'
 [menu.main]
     weight = -90
     [menu.main.params]
@@ -11,7 +9,7 @@ description = '关于我和这个博客'
 
 你好，我是 Chance。
 
-我要成为计算机大手子
+我要学计算机
 
 ## 关于本站
 
