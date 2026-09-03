@@ -19,11 +19,16 @@
     font-size: 1.4rem;
     font-weight: 600;
     line-height: 1;
-    transition: color 0.2s ease, background-color 0.2s ease;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.18s ease;
 }
 
 .article-back__icon {
     display: inline-flex;
+    transition: transform 0.18s ease;
 
     svg {
         width: 18px;
@@ -40,4 +45,72 @@
 .article-back__link:focus-visible {
     outline: 2px solid var(--accent-color);
     outline-offset: 3px;
+}
+
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.reading-progress__bar {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-color-darker));
+    box-shadow: 0 0 8px rgba(52, 73, 94, 0.28);
+    transform: scaleX(0);
+    transform-origin: left center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .article-back__link:hover {
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+        transform: translateY(-2px);
+    }
+
+    .article-back__link:hover .article-back__icon {
+        transform: translateX(-3px);
+    }
+
+    .article-list article {
+        transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    .article-list article:hover {
+        transform: translateY(-4px);
+    }
+
+    .article-list article .article-image img {
+        transition: transform 0.35s ease;
+    }
+
+    .article-list article:hover .article-image img {
+        transform: scale(1.03);
+    }
+}
+
+.article-back__link:active {
+    transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .article-back__link,
+    .article-back__icon,
+    .article-list article,
+    .article-list article .article-image img {
+        transition-duration: 0.01ms !important;
+    }
+
+    .article-back__link:hover,
+    .article-back__link:active,
+    .article-back__link:hover .article-back__icon,
+    .article-list article:hover,
+    .article-list article:hover .article-image img {
+        transform: none;
+    }
 }
