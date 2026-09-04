@@ -2,6 +2,8 @@
 
 {{ define "main" }}
     {{- $paginator := partial "helper/paginator.html" . -}}
+    {{- $numberOffset := mul (sub $paginator.PageNumber 1) $paginator.PagerSize -}}
+    {{- $totalPosts := $paginator.TotalNumberOfElements -}}
     {{- $posts := where .Site.RegularPages "Section" "posts" -}}
 
     <section class="home-hero" aria-labelledby="home-hero-title">
@@ -50,7 +52,7 @@
             {{ range $index, $page := $paginator.Pages }}
                 <article class="home-note-card {{ if eq $index 0 }}home-note-card--featured{{ end }}" data-reveal>
                     <a href="{{ .RelPermalink }}" aria-label="阅读《{{ .Title }}》">
-                        <span class="home-note-card__number" aria-hidden="true">{{ printf "%02d" (add $index 1) }}</span>
+                        <span class="home-note-card__number" aria-hidden="true">{{ printf "%02d" (sub $totalPosts (add $numberOffset $index)) }}</span>
                         <div class="home-note-card__content">
                             <div class="home-note-card__meta">
                                 {{ if not .Date.IsZero }}
