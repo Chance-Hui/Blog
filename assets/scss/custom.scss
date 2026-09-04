@@ -143,6 +143,16 @@ main.main {
     line-height: 1.65;
 }
 
+/* The sidebar scrolls vertically; hover effects must not create a horizontal bar. */
+#main-menu {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#main-menu :focus-visible {
+    outline-offset: -2px;
+}
+
 #main-menu > li:not(.menu-bottom-section) > a,
 #main-menu .menu-bottom-section ol > li {
     min-height: 44px;
@@ -152,8 +162,7 @@ main.main {
     transition:
         color 0.25s ease,
         background-color 0.25s ease,
-        border-color 0.25s ease,
-        transform 0.25s ease;
+        border-color 0.25s ease;
 }
 
 #main-menu > li.current > a {
@@ -780,7 +789,6 @@ main.main {
         color: var(--card-text-color-main);
         background: var(--premium-surface-strong);
         border-color: var(--premium-border);
-        transform: translateX(3px);
     }
 
     .home-hero__button:hover {
