@@ -1,21 +1,21 @@
 /*
- * Apple-inspired visual layer for the Stack theme.
+ * Blue editorial visual layer for the Stack theme.
  * All overrides stay in the project so the vendored theme remains untouched.
  */
 
 :root {
-    --body-background: #f5f5f7;
-    --accent-color: #c2410c;
-    --accent-color-darker: #bd3510;
+    --body-background: #edf3fb;
+    --accent-color: #1d4fb8;
+    --accent-color-darker: #153e96;
     --accent-color-text: #ffffff;
-    --body-text-color: #6e6e73;
+    --body-text-color: #596a80;
 
     --card-background: rgba(255, 255, 255, 0.84);
-    --card-background-selected: rgba(232, 232, 237, 0.9);
-    --card-text-color-main: #1d1d1f;
-    --card-text-color-secondary: #515154;
-    --card-text-color-tertiary: #66666b;
-    --card-separator-color: rgba(29, 29, 31, 0.1);
+    --card-background-selected: rgba(225, 233, 246, 0.9);
+    --card-text-color-main: #17263e;
+    --card-text-color-secondary: #526179;
+    --card-text-color-tertiary: #5d6d82;
+    --card-separator-color: rgba(35, 63, 106, 0.1);
     --card-border-radius: 28px;
     --card-padding: clamp(24px, 4vw, 44px);
 
@@ -26,33 +26,66 @@
 
     --premium-surface: rgba(255, 255, 255, 0.7);
     --premium-surface-strong: rgba(255, 255, 255, 0.9);
-    --premium-border: rgba(255, 255, 255, 0.78);
-    --premium-line: rgba(29, 29, 31, 0.1);
-    --premium-glow: rgba(233, 79, 29, 0.18);
+    --premium-border: rgba(71, 109, 164, 0.2);
+    --premium-line: rgba(35, 63, 106, 0.1);
+    --premium-glow: rgba(79, 135, 220, 0.18);
 
-    --shadow-l1: 0 1px 2px rgba(0, 0, 0, 0.02), 0 12px 34px rgba(0, 0, 0, 0.055);
-    --shadow-l2: 0 2px 4px rgba(0, 0, 0, 0.025), 0 22px 64px rgba(0, 0, 0, 0.11);
+    /* Shared by the hero and featured article, so both follow the color scheme. */
+    --cover-background: #e7f0ff;
+    --cover-glow-primary: rgba(78, 135, 225, 0.3);
+    --cover-glow-secondary: rgba(92, 155, 215, 0.2);
+    --cover-text: #172b49;
+    --cover-muted: #4d627c;
+    --cover-border: rgba(66, 112, 182, 0.27);
+    --cover-grid: rgba(74, 109, 157, 0.1);
+    --cover-ring: rgba(50, 91, 155, 0.2);
+    --cover-halo: rgba(63, 108, 178, 0.04);
+    --cover-number: rgba(36, 79, 145, 0.11);
+    --cover-number-hover: rgba(36, 79, 145, 0.17);
+    --cover-title-gradient: linear-gradient(112deg, #173e7a 5%, #285bad 55%, #3468ac 95%);
+    --cover-orb-one: radial-gradient(circle at 35% 35%, #86ace5, #afcdf6 36%, rgba(175, 205, 246, 0) 70%);
+    --cover-orb-two: radial-gradient(circle at 45% 40%, #c5e0f4, #a8c6ed 42%, rgba(168, 198, 237, 0) 72%);
+    --cover-shadow: 0 24px 70px rgba(34, 63, 105, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+    --shadow-l1: 0 1px 2px rgba(21, 44, 78, 0.025), 0 12px 34px rgba(35, 64, 105, 0.055);
+    --shadow-l2: 0 2px 4px rgba(21, 44, 78, 0.035), 0 22px 64px rgba(35, 64, 105, 0.11);
 }
 
 :root[data-scheme="dark"] {
-    --body-background: #070708;
-    --accent-color: #ff6b35;
-    --accent-color-darker: #ff8b5f;
-    --accent-color-text: #090909;
-    --body-text-color: #a1a1a6;
+    --body-background: #080f1b;
+    --accent-color: #8fbeff;
+    --accent-color-darker: #bdd8ff;
+    --accent-color-text: #0b1930;
+    --body-text-color: #a5b4c9;
 
-    --card-background: rgba(25, 25, 27, 0.86);
-    --card-background-selected: rgba(54, 54, 58, 0.92);
-    --card-text-color-main: #f5f5f7;
-    --card-text-color-secondary: #c7c7cc;
-    --card-text-color-tertiary: #8e8e93;
-    --card-separator-color: rgba(255, 255, 255, 0.11);
+    --card-background: rgba(21, 33, 52, 0.88);
+    --card-background-selected: rgba(41, 61, 91, 0.92);
+    --card-text-color-main: #edf3fc;
+    --card-text-color-secondary: #bccade;
+    --card-text-color-tertiary: #a0b1ca;
+    --card-separator-color: rgba(155, 186, 230, 0.12);
 
-    --premium-surface: rgba(25, 25, 27, 0.72);
-    --premium-surface-strong: rgba(31, 31, 34, 0.9);
-    --premium-border: rgba(255, 255, 255, 0.1);
-    --premium-line: rgba(255, 255, 255, 0.1);
-    --premium-glow: rgba(255, 107, 53, 0.22);
+    --premium-surface: rgba(17, 28, 45, 0.76);
+    --premium-surface-strong: rgba(23, 36, 56, 0.93);
+    --premium-border: rgba(152, 185, 234, 0.13);
+    --premium-line: rgba(152, 185, 234, 0.14);
+    --premium-glow: rgba(55, 105, 185, 0.15);
+
+    --cover-background: #0c182b;
+    --cover-glow-primary: rgba(49, 103, 187, 0.24);
+    --cover-glow-secondary: rgba(66, 115, 172, 0.14);
+    --cover-text: #edf4ff;
+    --cover-muted: #aabed7;
+    --cover-border: rgba(145, 181, 232, 0.16);
+    --cover-grid: rgba(155, 187, 236, 0.08);
+    --cover-ring: rgba(146, 182, 235, 0.19);
+    --cover-halo: rgba(130, 173, 236, 0.025);
+    --cover-number: rgba(157, 193, 246, 0.08);
+    --cover-number-hover: rgba(157, 193, 246, 0.14);
+    --cover-title-gradient: linear-gradient(112deg, #f1f7ff 5%, #a2c8ff 52%, #6999ed 95%);
+    --cover-orb-one: radial-gradient(circle at 35% 35%, #6496e8, #1e4083 36%, rgba(21, 52, 105, 0) 70%);
+    --cover-orb-two: radial-gradient(circle at 45% 40%, #4a70bd, #122b55 42%, rgba(18, 43, 85, 0) 72%);
+    --cover-shadow: 0 30px 90px rgba(0, 4, 12, 0.3), inset 0 1px 0 rgba(173, 204, 255, 0.035);
 
     --shadow-l1: 0 1px 2px rgba(0, 0, 0, 0.25), 0 18px 45px rgba(0, 0, 0, 0.24);
     --shadow-l2: 0 2px 5px rgba(0, 0, 0, 0.3), 0 28px 80px rgba(0, 0, 0, 0.42);
@@ -75,8 +108,8 @@ body {
 }
 
 ::selection {
-    color: #ffffff;
-    background: rgba(233, 79, 29, 0.82);
+    color: var(--accent-color-text);
+    background: var(--accent-color);
 }
 
 :focus-visible {
@@ -126,7 +159,7 @@ main.main {
 
 .sidebar header .site-avatar .site-logo {
     border: 2px solid var(--premium-border);
-    box-shadow: 0 0 0 5px rgba(233, 79, 29, 0.06), var(--shadow-l1);
+    box-shadow: 0 0 0 5px rgba(66, 116, 191, 0.08), var(--shadow-l1);
     transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.45s ease;
 }
 
@@ -206,14 +239,14 @@ main.main {
     align-items: center;
     overflow: hidden;
     padding: clamp(34px, 7vw, 88px);
-    color: #f5f5f7;
+    color: var(--cover-text);
     background:
-        radial-gradient(circle at 72% 18%, rgba(255, 119, 60, 0.24), transparent 28%),
-        radial-gradient(circle at 18% 88%, rgba(56, 89, 255, 0.15), transparent 32%),
-        #060607;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+        radial-gradient(circle at 72% 18%, var(--cover-glow-primary), transparent 36%),
+        radial-gradient(circle at 18% 88%, var(--cover-glow-secondary), transparent 38%),
+        var(--cover-background);
+    border: 1px solid var(--cover-border);
     border-radius: clamp(28px, 4vw, 44px);
-    box-shadow: 0 35px 100px rgba(0, 0, 0, 0.22);
+    box-shadow: var(--cover-shadow);
 }
 
 .home-hero::before {
@@ -223,8 +256,8 @@ main.main {
     content: "";
     opacity: 0.3;
     background-image:
-        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        linear-gradient(var(--cover-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--cover-grid) 1px, transparent 1px);
     background-size: 72px 72px;
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 78%);
 }
@@ -253,14 +286,14 @@ main.main {
 .home-hero__orb--one {
     top: -31%;
     right: -16%;
-    background: radial-gradient(circle at 35% 35%, #ff9f6f, #e44b17 30%, rgba(228, 75, 23, 0) 70%);
+    background: var(--cover-orb-one);
     animation: hero-orb-one 16s ease-in-out infinite alternate;
 }
 
 .home-hero__orb--two {
     right: 18%;
     bottom: -54%;
-    background: radial-gradient(circle at 45% 40%, #5475ff, #172554 42%, rgba(23, 37, 84, 0) 72%);
+    background: var(--cover-orb-two);
     opacity: 0.34;
     animation: hero-orb-two 19s ease-in-out infinite alternate;
 }
@@ -270,11 +303,11 @@ main.main {
     right: -17%;
     width: clamp(300px, 44vw, 620px);
     aspect-ratio: 1;
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    border: 1px solid var(--cover-ring);
     border-radius: 50%;
     box-shadow:
-        0 0 0 42px rgba(255, 255, 255, 0.018),
-        0 0 0 110px rgba(255, 255, 255, 0.012);
+        0 0 0 42px var(--cover-halo),
+        0 0 0 110px var(--cover-halo);
     transform: translateY(-50%);
 }
 
@@ -290,7 +323,7 @@ main.main {
     align-items: center;
     gap: 10px;
     margin: 0 0 clamp(22px, 4vw, 42px);
-    color: rgba(245, 245, 247, 0.64);
+    color: var(--cover-muted);
     font-size: 1.2rem;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -300,14 +333,14 @@ main.main {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #ff6b35;
-    box-shadow: 0 0 20px rgba(255, 107, 53, 0.85);
+    background: var(--accent-color);
+    box-shadow: 0 0 16px rgba(75, 133, 222, 0.4);
 }
 
 .home-hero h1 {
     max-width: 900px;
     margin: 0;
-    color: #f5f5f7;
+    color: var(--cover-text);
     font-size: clamp(4.7rem, 8.2vw, 10.4rem);
     font-weight: 700;
     line-height: 0.94;
@@ -316,7 +349,7 @@ main.main {
 
 .home-hero h1 span {
     color: transparent;
-    background: linear-gradient(112deg, #ffffff 5%, #ffad84 48%, #ff6930 88%);
+    background: var(--cover-title-gradient);
     background-clip: text;
     -webkit-background-clip: text;
 }
@@ -324,7 +357,7 @@ main.main {
 .home-hero__description {
     max-width: 550px;
     margin: clamp(26px, 4vw, 42px) 0 0;
-    color: rgba(245, 245, 247, 0.66);
+    color: var(--cover-muted);
     font-size: clamp(1.6rem, 2vw, 2rem);
     line-height: 1.65;
 }
@@ -343,11 +376,12 @@ main.main {
     align-items: center;
     gap: 10px;
     padding: 13px 20px;
-    color: #111111;
-    background: #f5f5f7;
+    color: var(--accent-color-text);
+    background: var(--accent-color);
     border-radius: 999px;
     font-size: 1.45rem;
     font-weight: 700;
+    box-shadow: 0 8px 24px rgba(37, 84, 157, 0.18);
     transition: color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
 }
 
@@ -358,7 +392,7 @@ main.main {
 }
 
 .home-hero__count {
-    color: rgba(245, 245, 247, 0.55);
+    color: var(--cover-muted);
     font-size: 1.35rem;
 }
 
@@ -369,7 +403,7 @@ main.main {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: rgba(245, 245, 247, 0.62);
+    color: var(--cover-muted);
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: 0.16em;
@@ -381,14 +415,14 @@ main.main {
     width: 42px;
     height: 1px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.24);
+    background: var(--cover-ring);
 }
 
 .home-hero__scroll i::after {
     position: absolute;
     inset: 0;
     content: "";
-    background: #ffffff;
+    background: var(--accent-color);
     transform: translateX(-100%);
     animation: scroll-line 2.2s ease-in-out infinite;
 }
@@ -455,7 +489,7 @@ main.main {
     padding: clamp(26px, 4vw, 46px);
     color: var(--card-text-color-main);
     background:
-        radial-gradient(circle at 92% 6%, rgba(233, 79, 29, 0.13), transparent 34%),
+        radial-gradient(circle at 92% 6%, var(--premium-glow), transparent 38%),
         var(--premium-surface-strong);
     border: 1px solid var(--premium-border);
     border-radius: clamp(24px, 3vw, 34px);
@@ -470,14 +504,14 @@ main.main {
 .home-note-card--featured > a {
     min-height: clamp(390px, 45vw, 540px);
     align-items: flex-end;
-    color: #f5f5f7;
+    color: var(--cover-text);
     background:
         linear-gradient(120deg, rgba(255, 255, 255, 0.03), transparent 42%),
-        radial-gradient(circle at 83% 12%, rgba(255, 119, 60, 0.38), transparent 26%),
-        radial-gradient(circle at 80% 90%, rgba(47, 73, 173, 0.24), transparent 30%),
-        #0b0b0d;
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.2);
+        radial-gradient(circle at 83% 12%, var(--cover-glow-primary), transparent 34%),
+        radial-gradient(circle at 80% 90%, var(--cover-glow-secondary), transparent 38%),
+        var(--cover-background);
+    border-color: var(--cover-border);
+    box-shadow: var(--cover-shadow);
 }
 
 .home-note-card > a::before {
@@ -496,7 +530,7 @@ main.main {
     top: 20px;
     right: 28px;
     z-index: -1;
-    color: rgba(29, 29, 31, 0.055);
+    color: rgba(36, 79, 145, 0.065);
     font-size: clamp(8rem, 16vw, 18rem);
     font-weight: 700;
     line-height: 0.8;
@@ -505,13 +539,13 @@ main.main {
 }
 
 :root[data-scheme="dark"] .home-note-card__number {
-    color: rgba(255, 255, 255, 0.045);
+    color: rgba(157, 193, 246, 0.06);
 }
 
 .home-note-card--featured .home-note-card__number {
     top: 34px;
     right: 42px;
-    color: rgba(255, 255, 255, 0.075);
+    color: var(--cover-number);
 }
 
 .home-note-card__content {
@@ -531,7 +565,7 @@ main.main {
 }
 
 .home-note-card--featured .home-note-card__meta {
-    color: rgba(245, 245, 247, 0.52);
+    color: var(--cover-muted);
 }
 
 .home-note-card h3 {
@@ -560,7 +594,7 @@ main.main {
 }
 
 .home-note-card--featured .home-note-card__content > p {
-    color: rgba(245, 245, 247, 0.62);
+    color: var(--cover-muted);
 }
 
 .home-note-card__arrow {
@@ -579,8 +613,8 @@ main.main {
 }
 
 .home-note-card--featured .home-note-card__arrow {
-    color: #111111;
-    background: #f5f5f7;
+    color: var(--accent-color-text);
+    background: var(--accent-color);
     border-color: transparent;
 }
 
@@ -738,8 +772,8 @@ main.main {
     display: block;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, #ff9d70, #ff5a22 55%, #d9370c);
-    box-shadow: 0 0 14px rgba(255, 91, 34, 0.5);
+    background: linear-gradient(90deg, #85bfff, #397de1 55%, #244bad);
+    box-shadow: 0 0 14px rgba(57, 125, 225, 0.4);
     transform: scaleX(0);
     transform-origin: left center;
 }
@@ -780,7 +814,7 @@ main.main {
 
 @media (hover: hover) and (pointer: fine) {
     .sidebar header .site-avatar:hover .site-logo {
-        box-shadow: 0 0 0 7px rgba(233, 79, 29, 0.1), var(--shadow-l2);
+        box-shadow: 0 0 0 7px rgba(66, 116, 191, 0.12), var(--shadow-l2);
         transform: scale(1.035);
     }
 
@@ -792,8 +826,8 @@ main.main {
     }
 
     .home-hero__button:hover {
-        color: #ffffff;
-        background: var(--accent-color);
+        color: var(--accent-color-text);
+        background: var(--accent-color-darker);
         transform: translateY(-2px);
     }
 
@@ -803,14 +837,14 @@ main.main {
 
     .home-note-card > a:hover {
         color: var(--card-text-color-main);
-        border-color: rgba(233, 79, 29, 0.28);
+        border-color: rgba(75, 124, 205, 0.34);
         box-shadow: var(--shadow-l2);
         transform: translateY(-6px);
     }
 
     .home-note-card--featured > a:hover {
-        color: #ffffff;
-        border-color: rgba(255, 255, 255, 0.18);
+        color: var(--cover-text);
+        border-color: rgba(75, 124, 205, 0.4);
     }
 
     .home-note-card > a:hover::before {
@@ -819,16 +853,16 @@ main.main {
     }
 
     .home-note-card > a:hover .home-note-card__number {
-        color: rgba(233, 79, 29, 0.11);
+        color: var(--cover-number-hover);
         transform: translate3d(-8px, 4px, 0);
     }
 
     .home-note-card--featured > a:hover .home-note-card__number {
-        color: rgba(255, 255, 255, 0.12);
+        color: var(--cover-number-hover);
     }
 
     .home-note-card > a:hover .home-note-card__arrow {
-        color: #ffffff;
+        color: var(--accent-color-text);
         background: var(--accent-color);
         transform: translateX(4px);
     }
